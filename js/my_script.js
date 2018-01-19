@@ -5,21 +5,21 @@ function displayLocation(latitude,longitude){
 		var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true';
         var async = true;
 
-        request.open(method, url, async);
+        request.open(method, url, async);//Request prepration
         request.onreadystatechange = function(){
           if(request.readyState == 4 && request.status == 200){
-            var data = JSON.parse(request.responseText);
+            var data = JSON.parse(request.responseText);// Holding response in variable
             var address = data.results[0];
 			var result = document.getElementById("address");
             result.innerHTML += address.formatted_address;
 			}
         };
-        request.send();
+        request.send();//Request sending
       };
 
       var successCallback = function(position){
-        var x = position.coords.latitude;
-        var y = position.coords.longitude;
+        var x = position.coords.latitude;// Geting latitude
+        var y = position.coords.longitude;//Geting Longitude
         displayLocation(x,y);
 		myMap(x,y);
 		myWeather(x,y);
@@ -43,7 +43,7 @@ function displayLocation(latitude,longitude){
 
       var options = {
         enableHighAccuracy: true,
-        timeout: 100000000000,
+        timeout: 1000000,
         maximumAge: 0
       };
 
@@ -60,7 +60,7 @@ function displayLocation(latitude,longitude){
   			});
   		marker.setMap(map);
   
-    	var myPosition = new google.maps.Circle({
+    	var myPosition = new google.maps.Circle({// making a circle around the current location
     	center: myCenter,
     	radius: 8,
     	strokeColor: "#0000FF",
@@ -71,7 +71,7 @@ function displayLocation(latitude,longitude){
   		});
   		
 		myPosition.setMap(map);
-  		var infowindow = new google.maps.InfoWindow({
+  		var infowindow = new google.maps.InfoWindow({// Tool tip like think or information
     	content: "<h4>Your are Here</h4>"
   		});
   		infowindow.open(map,marker);
