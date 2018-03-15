@@ -78,7 +78,8 @@ function displayLocation(latitude,longitude){
 
 	}
 	function myWeather(latitude,longitude){
-		//document.getElementById("displayWeather").innerHTML = "Latitude is "+latitude+" And Longitude is "+longitude;
+		/*document.getElementById("displayWeather").innerHTML = "Latitude is "+latitude+"
+     And Longitude is "+longitude;*/
 		//var apiKey = "ef062a08a2033bb11b5c7e0864da3b4e";
   		//var baseURL = "http://api.openweathermap.org/data/2.5/weather";
 		//var URL =  "baseURL+'?lat='+latitude+'&lon='+longitude+'&APPID='+apiKey";
@@ -87,14 +88,26 @@ function displayLocation(latitude,longitude){
 			//var JSONData = (JSON.stringify(json));
 			//document.getElementById("weather").innerHTML += json.weather[0].description;
 			document.getElementById("weatherNow").innerHTML+= json.weather[0].description;
-			document.getElementById("CTemp").innerHTML+= (json.main.temp - 273.15);
-			//document.getElementById("MinTemp").innerHTML+= (json.main.temp_min - 273.15);
-			//document.getElementById("MaxTemp").innerHTML+= (json.main.temp_max - 273.15);
-			document.getElementById("wind").innerHTML+= json.wind.speed;
-			document.getElementById("pressure").innerHTML+= json.main.pressure;
+			document.getElementById("CTemp").innerHTML+= Math.round((json.main.temp - 273.15))+String.fromCharCode(176)+"C";
+			document.getElementById("wind").innerHTML+= json.wind.speed+" m/s";
+			document.getElementById("pressure").innerHTML+= json.main.pressure+" hpa";
 			//document.getElementById("visibility").innerHTML+= json.visibility;
 			document.getElementById("Humidity").innerHTML+= json.main.humidity;
-			document.getElementById("Sunrise").innerHTML+= json.sys.sunrise;
-			document.getElementById("Sunset").innerHTML+= json.sys.sunset;
+      var icon_url = "http://openweathermap.org/img/w/" + json.weather[0].icon +".png";
+      document.getElementById("icon").src = icon_url;
+
+      // UNIX To local time conversion.
+        function unixToLocal(unix) {
+          // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+          var date = new Date(unix * 1000);
+          var hours = date.getHours();
+          var minutes = date.getMinutes();
+          if(hours>12) {
+            hours -= 12;
+          }
+          return time = hours+':'+minutes;
+        }
+      document.getElementById("Sunrise").innerHTML+= unixToLocal(json.sys.sunrise)+" AM";
+			document.getElementById("Sunset").innerHTML+= unixToLocal(json.sys.sunset)  + " PM";
 			});
 		};
