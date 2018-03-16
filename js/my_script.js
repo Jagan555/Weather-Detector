@@ -78,23 +78,18 @@ function displayLocation(latitude,longitude){
 
 	}
 	function myWeather(latitude,longitude){
-		/*document.getElementById("displayWeather").innerHTML = "Latitude is "+latitude+"
-     And Longitude is "+longitude;*/
-		//var apiKey = "ef062a08a2033bb11b5c7e0864da3b4e";
-  		//var baseURL = "http://api.openweathermap.org/data/2.5/weather";
-		//var URL =  "baseURL+'?lat='+latitude+'&lon='+longitude+'&APPID='+apiKey";
 		$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&APPID=ef062a08a2033bb11b5c7e0864da3b4e",function(json){
-            //document.getElementById("weather").innerHTML = (JSON.stringify(json));
-			//var JSONData = (JSON.stringify(json));
-			//document.getElementById("weather").innerHTML += json.weather[0].description;
+         
 			document.getElementById("weatherNow").innerHTML+= json.weather[0].description;
 			document.getElementById("CTemp").innerHTML+= Math.round((json.main.temp - 273.15))+String.fromCharCode(176)+"C";
 			document.getElementById("wind").innerHTML+= json.wind.speed+" m/s";
 			document.getElementById("pressure").innerHTML+= json.main.pressure+" hpa";
-			//document.getElementById("visibility").innerHTML+= json.visibility;
-			document.getElementById("Humidity").innerHTML+= json.main.humidity;
+			document.getElementById("Cloudiness").innerHTML+= json.clouds.all+"%";
+			document.getElementById("Humidity").innerHTML+= json.main.humidity + "%";
+      document.getElementById("latLong").innerHTML+= json.coord.lat + ", "+json.coord.lon;
       var icon_url = "http://openweathermap.org/img/w/" + json.weather[0].icon +".png";
       document.getElementById("icon").src = icon_url;
+      document.getElementsByTagName("link")[0].href = icon_url;
 
       // UNIX To local time conversion.
         function unixToLocal(unix) {
