@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>Weather Detector</title>
-  <link rel="shortcut icon" href="images/icon_apc_icon.ico" />
+  <link rel="shortcut icon"/>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -94,9 +94,14 @@
         <td id="pressure"></td>
       </tr>
       <tr> 
-        <th>Humidity(in %)</th>
+        <th>Humidity</th>
         <td id="Humidity"></td>
         </tr>
+       <tr> 
+        <th>Cloudiness</th>
+        <td id="Cloudiness"></td>
+        </tr>
+      
         <tr>
         <th>Sunrise</th>
         <td id="Sunrise"></td>
@@ -104,6 +109,10 @@
         <tr>
         <th>Sunset</th>
         <td  id="Sunset"></td>
+        </tr>
+        <tr>
+        <th>Latitude & Longitude</th>
+        <td  id="latLong"></td>
         </tr>
         <tr><td colspan="2" id="address" class="info"></td></tr>
   </table>
