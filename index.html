@@ -10,38 +10,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEF1GGNTQYadEQKVly4pdGEXErv_nVGGM&callback=myMap"></script>
   <script src="js/my_script.js"></script>
+  <link rel="stylesheet" href="css/mystyle.css">
 
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
-    /* Set black background color, white text and some padding */
-	footer {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #555;
-  text-align: center;
-  color: white;
-}
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
-    }
-  </style>
+  
 </head>
 <body>
 
@@ -51,11 +22,7 @@
       <a class="navbar-brand" href="#">Weather Detector <span><img id="icon" alt='Icon depicting current weather.'></span></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+      
    </div>
   </div>
 </nav>
@@ -101,6 +68,10 @@
         <tr>
         <th>Latitude & Longitude</th>
         <td  id="latLong"></td>
+        </tr>
+        <tr>
+        <th>Forecast Time</th>
+        <td  id="dayTime"></td>
         </tr>
         <tr><td colspan="2" id="address" class="info"></td></tr>
   </table>
